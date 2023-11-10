@@ -5,7 +5,7 @@ import HomeProductSection from "../customer/Components/Home/HomeProductSection";
 import { useDispatch, useSelector } from "react-redux";
 import { findProducts } from "../Redux/Customers/Product/Action";
 import { findCategories } from "../Redux/Customers/Category/Action";
-
+import MessengerCustomerChat from "react-messenger-customer-chat";
 const Homepage = () => {
   const { customersProduct, customerCategory } = useSelector((store) => store);
   const dispatch = useDispatch();
@@ -81,6 +81,7 @@ const Homepage = () => {
         />
         {/* <HomeProductSection data={mensPantsPage1} section={"Men's Pants"} /> */}
       </div>
+      <MessengerCustomerChat pageId="117171744822319" appId="300019272928819" />
     </div>
   );
 };

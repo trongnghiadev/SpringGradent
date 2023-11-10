@@ -33,7 +33,7 @@ const CustomerRoutes = () => {
         <Routes>
           <Route path="/login" element={<Homepage />}></Route>
           <Route path="/register" element={<Homepage />}></Route>
-
+          <Route path="/SpringGradent/" element={<Homepage />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/home" element={<Homepage />}></Route>
           <Route path="/about" element={<About />}></Route>
