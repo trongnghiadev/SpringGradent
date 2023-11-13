@@ -27,7 +27,7 @@ export default function ProductDetails() {
   const { customersProduct } = useSelector((store) => store);
   const { productId } = useParams();
   const jwt = localStorage.getItem("jwt");
-  // console.log("param",productId,product)
+  // //console.log("param",productId,product)
   const handleSetActiveImage = (image) => {
     setActiveImage(image);
   };

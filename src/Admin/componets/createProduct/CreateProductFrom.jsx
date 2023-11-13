@@ -81,7 +81,7 @@ const CreateProductForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createProduct({ data: productData, jwt }));
-    console.log(productData);
+    //console.log(productData);
   };
 
   // const handleAddProducts=(data)=>{

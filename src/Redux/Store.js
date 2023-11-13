@@ -9,6 +9,7 @@ import adminOrderReducer from "./Admin/Orders/Reducer";
 import ReviewReducer from "./Customers/Review/Reducer";
 import customerCategoryReducer from "./Customers/Category/Reducer";
 import adminElementReducer from "./Admin/Element/Reducer";
+import ingredientTableReducer from "./Admin/IngredientTable/Reducer";
 
 const rootReducers = combineReducers({
   auth: authReducer,
@@ -22,6 +23,7 @@ const rootReducers = combineReducers({
   adminsProduct: productReducer,
   adminsOrder: adminOrderReducer,
   adminsEmlement: adminElementReducer,
+  adminIngredienttable: ingredientTableReducer,
 });
 
 export const store = legacy_createStore(rootReducers, applyMiddleware(thunk));

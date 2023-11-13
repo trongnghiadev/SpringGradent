@@ -71,7 +71,7 @@ const OrdersTable = () => {
     setFormData({ ...formData, [name]: value });
   };
   function handlePaginationChange(event, value) {
-    console.log("Current page:", value);
+    //console.log("Current page:", value);
   }
 
   const handleConfirmedOrder = (orderId, index) => {

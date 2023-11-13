@@ -12,7 +12,7 @@ export const findCategories = () => async (dispatch) => {
     // Thực hiện cuộc gọi HTTP để lấy danh mục sản phẩm từ API của bạn
     const { data } = await apipublic.get(`/customer/categories`);
 
-    console.log("get categories - ", data);
+    //console.log("get categories - ", data);
     dispatch({
       type: GET_ALL_CATEGORY_SUCCESS,
       payload: data,

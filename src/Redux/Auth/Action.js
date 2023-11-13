@@ -24,7 +24,7 @@ export const register = (userData) => async (dispatch) => {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
     const user = response.data;
     if (user.jwt) localStorage.setItem("jwt", user.jwt);
-    console.log("registerr :", user);
+    //console.log("registerr :", user);
     dispatch(registerSuccess(user));
   } catch (error) {
     dispatch(registerFailure(error.message));
@@ -39,7 +39,10 @@ const loginFailure = (error) => ({ type: LOGIN_FAILURE, payload: error });
 export const login = (userData) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData);
+    const response = await axios.post(
+      `${API_BASE_URL}/customer/signin`,
+      userData
+    );
     const user = response.data;
     if (user.jwt) localStorage.setItem("jwt", user.jwt);
     dispatch(loginSuccess(user));
@@ -60,7 +63,7 @@ export const getUser = (token) => {
       });
       const user = response.data;
       dispatch({ type: GET_USER_SUCCESS, payload: user });
-      console.log("req User ", user);
+      //console.log("req User ", user);
     } catch (error) {
       const errorMessage = error.message;
       dispatch({ type: GET_USER_FAILURE, payload: errorMessage });

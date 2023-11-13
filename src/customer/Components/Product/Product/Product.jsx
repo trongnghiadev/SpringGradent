@@ -57,7 +57,7 @@ export default function Product() {
   const pageNumber = searchParams.get("page") || 1;
   const stock = searchParams.get("stock");
 
-  // console.log("location - ", colorValue, sizeValue,price,disccount);
+  // //console.log("location - ", colorValue, sizeValue,price,disccount);
 
   const handleSortChange = (value) => {
     const searchParams = new URLSearchParams(location.search);
@@ -111,7 +111,7 @@ export default function Product() {
       if (filterValues.length === 0) {
         searchParams.delete(sectionId);
       }
-      console.log("includes");
+      //console.log("includes");
     } else {
       // Remove all values for the current section
       // searchParams.delete(sectionId);

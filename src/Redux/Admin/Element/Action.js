@@ -21,7 +21,7 @@ export const createElement = (element) => async (dispatch) => {
       payload: data,
     });
 
-    console.log("created product ", data);
+    //console.log("created product ", data);
   } catch (error) {
     dispatch({
       type: CREATE_ELEMENT_FAILURE,
@@ -42,7 +42,7 @@ export const getEmlement = (reqData) => async (dispatch) => {
       `/api/admin/elements/all?pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
 
-    console.log("getEmlement - ", data);
+    //console.log("getEmlement - ", data);
     dispatch({
       type: GET_ELEMENTS_SUCCESS,
       payload: data,

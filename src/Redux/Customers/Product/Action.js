@@ -44,7 +44,7 @@ export const findProducts = (reqData) => async (dispatch) => {
       `/customer/products?color=${colors}&size=${sizes}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDiscount=${minDiscount}&category=${category}&stock=${stock}&sort=${sort}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
 
-    console.log("get product by category - ", data);
+    //console.log("get product by category - ", data);
     dispatch({
       type: FIND_PRODUCTS_BY_CATEGORY_SUCCESS,
       payload: data,
@@ -68,7 +68,7 @@ export const findProductById = (reqData) => async (dispatch) => {
       `/customer/products/id/${reqData.productId}`
     );
 
-    console.log("products by  id : ", data);
+    //console.log("products by  id : ", data);
     dispatch({
       type: FIND_PRODUCT_BY_ID_SUCCESS,
       payload: data,
@@ -98,7 +98,7 @@ export const createProduct = (product) => async (dispatch) => {
       payload: data,
     });
 
-    console.log("created product ", data);
+    //console.log("created product ", data);
   } catch (error) {
     dispatch({
       type: CREATE_PRODUCT_FAILURE,
@@ -135,7 +135,7 @@ export const updateProduct = (product) => async (dispatch) => {
 };
 
 export const deleteProduct = (productId) => async (dispatch) => {
-  console.log("delete product action", productId);
+  //console.log("delete product action", productId);
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
@@ -146,9 +146,9 @@ export const deleteProduct = (productId) => async (dispatch) => {
       payload: data,
     });
 
-    console.log("product delte ", data);
+    //console.log("product delte ", data);
   } catch (error) {
-    console.log("catch error ", error);
+    //console.log("catch error ", error);
     dispatch({
       type: DELETE_PRODUCT_FAILURE,
       payload:

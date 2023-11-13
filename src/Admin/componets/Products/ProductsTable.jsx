@@ -81,9 +81,9 @@ const ProductsTable = () => {
   useEffect(() => {
     setItems(customersProduct?.products?.content);
   }, [customersProduct?.products]);
-  console.log("data", items);
+  //console.log("data", items);
   const handleFilterChange = (e, sectionId) => {
-    console.log(e.target.value, sectionId);
+    //console.log(e.target.value, sectionId);
     setFilterValue((values) => ({ ...values, [sectionId]: e.target.value }));
     searchParams.set(sectionId, e.target.value);
     const query = searchParams.toString();
@@ -91,11 +91,11 @@ const ProductsTable = () => {
   };
 
   const handleDeleteProduct = (productId) => {
-    console.log("delete product ", productId);
+    //console.log("delete product ", productId);
     dispatch(deleteProduct(productId));
   };
 
-  console.log("data", items);
+  //console.log("data", items);
   const handleCheckedChange = (productId, checked) => {
     const updatedItems = items.map((item) => {
       if (item.id === productId) {

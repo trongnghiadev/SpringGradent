@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 
 export const createPayment = (reqData) => async (dispatch) => {
-  console.log("create payment reqData ", reqData);
+  //console.log("create payment reqData ", reqData);
   try {
     dispatch({
       type: CREATE_PAYMENT_REQUEST,
@@ -29,7 +29,7 @@ export const createPayment = (reqData) => async (dispatch) => {
       reqData,
       config
     );
-    console.log("datta", data);
+    //console.log("datta", data);
     if (data.payment_link_url) {
       window.location.href = data.payment_link_url;
     }
@@ -50,7 +50,7 @@ export const createPayment = (reqData) => async (dispatch) => {
 
 export const updatePayment = (reqData) => {
   return async (dispatch) => {
-    console.log("update payment reqData ", reqData);
+    //console.log("update payment reqData ", reqData);
     dispatch(updatePaymentRequest());
     try {
       const config = {
@@ -63,7 +63,7 @@ export const updatePayment = (reqData) => {
         `${API_BASE_URL}/api/payment?payment_id=${reqData.paymentId}&order_id=${reqData.orderId}`,
         config
       );
-      console.log("updated data", response.data);
+      //console.log("updated data", response.data);
       dispatch(updatePaymentSuccess(response.data));
     } catch (error) {
       dispatch(updatePaymentFailure(error.message));

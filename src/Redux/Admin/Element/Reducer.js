@@ -85,7 +85,7 @@ const adminElementReducer = (state = initialState, action) => {
         error: null,
       };
     case DELETE_ELEMENT_SUCCESS:
-      console.log("delete ", state.elements);
+      //console.log("delete ", state.elements);
       return {
         ...state,
         loading: false,

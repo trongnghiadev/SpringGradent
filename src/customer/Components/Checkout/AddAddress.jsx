@@ -14,7 +14,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
   const { auth } = useSelector((store) => store);
   const [selectedAddress, setSelectedAdress] = useState(null);
 
-  // console.log("auth", auth);
+  // //console.log("auth", auth);
 
   const handleSubmit = (event) => {
     event.preventDefault();

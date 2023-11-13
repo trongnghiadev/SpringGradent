@@ -21,7 +21,7 @@ const PaymentSuccess = () => {
   const { order } = useSelector((store) => store);
 
   useEffect(() => {
-    console.log("orderId", orderId);
+    //console.log("orderId", orderId);
     const urlParams = new URLSearchParams(window.location.search);
     setPaymentId(urlParams.get("razorpay_payment_id"));
     setReferenceId(urlParams.get("razorpay_payment_link_reference_id"));

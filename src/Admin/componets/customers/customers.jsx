@@ -98,7 +98,7 @@ const rows = [
 const Customers = () => {
   const navigate = useNavigate();
   function handlePaginationChange(event, value) {
-    console.log("Current page:", value);
+    //console.log("Current page:", value);
   }
   return (
     <Box>

@@ -18,7 +18,7 @@ const OrderSummary = () => {
   const jwt = localStorage.getItem("jwt");
   const { order } = useSelector((state) => state);
 
-  console.log("orderId ", order.order);
+  //console.log("orderId ", order.order);
 
   useEffect(() => {
     dispatch(getOrderById(orderId));

@@ -12,7 +12,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
   const { cart } = useSelector((store) => store);
-  console.log("cart ", cart);
+  //console.log("cart ", cart);
 
   const [cartItems, setCart] = useState(null);
 
@@ -20,7 +20,7 @@ const Cart = () => {
     dispatch(getCart(jwt));
   }, [jwt, cartItems, dispatch]);
 
-  console.log("cart.cartItems: ", cart.cartItems);
+  //console.log("cart.cartItems: ", cart.cartItems);
 
   // ... Các dòng mã khác
 

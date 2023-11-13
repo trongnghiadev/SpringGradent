@@ -28,6 +28,7 @@ import OrdersTable from "./componets/Orders/OrdersTable";
 import Customers from "./componets/customers/customers";
 import UpdateProductForm from "./componets/updateProduct/UpdateProduct";
 import CreateElementForm from "./componets/createElement/CreateElementFrom";
+import IngredienttableTable from "./componets/IngredienttableTable/IngredienttableTable";
 
 const drawerWidth = 240;
 
@@ -151,6 +152,10 @@ export default function AdminPannel() {
               element={<UpdateProductForm />}
             ></Route>
             <Route path="/products" element={<ProductsTable />}></Route>
+            <Route
+              path="/product/update/IngredienttableTable/:productId"
+              element={<IngredienttableTable />}
+            ></Route>
             <Route path="/orders" element={<OrdersTable />}></Route>
             <Route path="/customers" element={<Customers />}></Route>
             <Route path="/demo" element={<DemoAdmin />}></Route>

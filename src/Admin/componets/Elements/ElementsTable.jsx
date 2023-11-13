@@ -42,7 +42,6 @@ const ElementsTable = () => {
   };
 
   useEffect(() => {
-    // setFilterValue({ availability, category, sort });
     const data = {
       pageNumber: page || 0,
       pageSize: 10,
@@ -50,9 +49,9 @@ const ElementsTable = () => {
     dispatch(getEmlement(data));
   }, [page, dispatch]);
 
-  console.log("page", adminsEmlement);
+  //console.log("page", adminsEmlement);
   const handleDeleteProduct = (productId) => {
-    console.log("delete product ", productId);
+    //console.log("delete product ", productId);
   };
 
   return (
@@ -111,7 +110,7 @@ const ElementsTable = () => {
                       variant="contained"
                       startIcon={<DeleteIcon />}
                       color="error"
-                      onClick={() => handleDeleteProduct(item.id)}
+                      //onClick={() => handleDeleteProduct(item.id)}
                     >
                       XÓA
                     </Button>

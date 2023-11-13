@@ -8,7 +8,7 @@ import { formatNumber } from "../../../Util/formatNumber";
 
 const OrderCard = ({ item, order }) => {
   const navigate = useNavigate();
-  console.log("items ", item, order, order.orderStatus);
+  //console.log("items ", item, order, order.orderStatus);
   return (
     <Box className="p-5 shadow-lg hover:shadow-2xl border ">
       <Grid spacing={2} container sx={{ justifyContent: "space-between" }}>

@@ -9,7 +9,14 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
 // import "./CreateProductForm.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +26,7 @@ import {
 } from "../../../Redux/Customers/Product/Action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getIngredienttable } from "../../../Redux/Admin/IngredientTable/Action";
 
 const initialSizes = [
   { name: "S", quantity: 0 },
@@ -41,12 +49,27 @@ const UpdateProductForm = () => {
     secondLavelCategory: "",
     thirdLavelCategory: "",
     description: "",
+    ingredientTable: "",
   });
+  const [ingredientTable, setIngredientTable] = useState();
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { productId } = useParams();
-  const { customersProduct } = useSelector((store) => store);
+  const navigate = useNavigate();
+  const { customersProduct, adminIngredienttable } = useSelector(
+    (store) => store
+  );
+  const handleClick = () => {
+    const newPath = `/admin/product/update/IngredienttableTable/${productId}`;
+    navigate(newPath, { replace: true });
+  };
+  useEffect(() => {
+    dispatch(findProductById({ productId }));
+  }, [productId]);
 
+  useEffect(() => {
+    dispatch(getIngredienttable({ productId }));
+  }, [productId]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProductData((prevState) => ({
@@ -70,12 +93,8 @@ const UpdateProductForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateProduct());
-    console.log(productData);
+    //console.log(productData);
   };
-
-  useEffect(() => {
-    dispatch(findProductById({ productId }));
-  }, [productId]);
 
   useEffect(() => {
     if (customersProduct.product) {
@@ -88,6 +107,12 @@ const UpdateProductForm = () => {
     }
   }, [customersProduct.product]);
 
+  useEffect(() => {
+    if (adminIngredienttable) {
+      setIngredientTable(adminIngredienttable?.data);
+    }
+  }, [adminIngredienttable]);
+  //console.log("productData.ingredientTable:", ingredientTable);
   return (
     <Fragment className="createProductContainer ">
       <Typography
@@ -95,7 +120,7 @@ const UpdateProductForm = () => {
         sx={{ textAlign: "center" }}
         className="py-10 text-center "
       >
-        Add New Product
+        Thông Tin Sản Phẩm
       </Typography>
       <form
         onSubmit={handleSubmit}
@@ -240,30 +265,6 @@ const UpdateProductForm = () => {
               value={productData.description}
             />
           </Grid>
-          {/* {productData.size.map((size, index) => (
-            <Grid container item spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Size Name"
-                  name="name"
-                  value={size.name}
-                  onChange={(event) => handleSizeChange(event, index)}
-                  required
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Quantity"
-                  name="size_quantity"
-                  type="number"
-                  onChange={(event) => handleSizeChange(event, index)}
-                  required
-                  fullWidth
-                />
-              </Grid>{" "}
-            </Grid>
-          ))} */}
           <Grid item xs={12}>
             <Button
               variant="contained"
@@ -272,19 +273,86 @@ const UpdateProductForm = () => {
               size="large"
               type="submit"
             >
-              Update Product
+              Cập Nhật Sản Phẩm
             </Button>
-            {/* <Button
-              variant="contained"
-              sx={{ p: 1.8 }}
-              className="py-20 ml-10"
-              size="large"
-              onClick={()=>handleAddProducts(dressPage1)}
-            >
-              Add Products By Loop
-            </Button> */}
           </Grid>
         </Grid>
+        {ingredientTable?.length < 1 ? (
+          <Grid item xs={12} mt={6}>
+            <Button
+              onClick={handleClick}
+              variant="contained"
+              sx={{ p: 1.8 }}
+              className="py-20"
+              size="large"
+              color="error"
+              type="submit"
+            >
+              Tạo Công Thức
+            </Button>
+          </Grid>
+        ) : (
+          <Grid item xs={12} mt={6}>
+            <Typography variant="h5" m={2}>
+              Công Thức Chế Tạo
+            </Typography>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Tên Nguyên Liệu</TableCell>
+                    <TableCell align="right">Số Lượng (Cái)</TableCell>
+                    <TableCell align="right">Tồn Kho</TableCell>
+                    <TableCell align="right">Giá Gốc X1000 VNĐ</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {ingredientTable?.map((row) => (
+                    <TableRow
+                      key={row.element.name}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.element.name}
+                      </TableCell>
+                      <TableCell align="right">{row.quantity}</TableCell>
+                      <TableCell align="right">
+                        {row.element.inventory}
+                      </TableCell>
+                      <TableCell align="right">{row.element.price}</TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell colSpan={3} align="right">
+                      Tổng Giá Gốc:
+                    </TableCell>
+                    <TableCell align="right">
+                      {/* Calculate the total amount here */}
+                      {ingredientTable?.reduce(
+                        (total, row) =>
+                          total + row.quantity * row.element.price,
+                        0
+                      )}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <Grid item xs={12} mt={3}>
+              <Button
+                onClick={handleClick}
+                variant="contained"
+                sx={{ p: 1.8 }}
+                className="py-20"
+                size="large"
+                color="warning"
+                type="submit"
+              >
+                Cập Nhật Công Thức
+              </Button>
+            </Grid>
+          </Grid>
+        )}
       </form>
     </Fragment>
   );

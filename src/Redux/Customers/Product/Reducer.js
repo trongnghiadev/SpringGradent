@@ -86,7 +86,7 @@ const customerProductReducer = (state = initialState, action) => {
         error: null,
       };
     case DELETE_PRODUCT_SUCCESS:
-      console.log("delete ", state.products);
+      //console.log("delete ", state.products);
       return {
         ...state,
         loading: false,

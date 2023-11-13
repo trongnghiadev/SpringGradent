@@ -28,7 +28,6 @@ const CreateElementForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createElement({ data: elementData, jwt }));
-    console.log(elementData);
   };
 
   return (
