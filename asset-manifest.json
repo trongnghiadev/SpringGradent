@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/SpringGradent/static/css/main.14eb36e6.css",
-    "main.js": "/SpringGradent/static/js/main.b2d2a189.js",
+    "main.css": "/SpringGradent/static/css/main.9cffc5dd.css",
+    "main.js": "/SpringGradent/static/js/main.9ea19724.js",
     "static/js/787.46493d11.chunk.js": "/SpringGradent/static/js/787.46493d11.chunk.js",
     "index.html": "/SpringGradent/index.html",
-    "main.14eb36e6.css.map": "/SpringGradent/static/css/main.14eb36e6.css.map",
-    "main.b2d2a189.js.map": "/SpringGradent/static/js/main.b2d2a189.js.map",
+    "main.9cffc5dd.css.map": "/SpringGradent/static/css/main.9cffc5dd.css.map",
+    "main.9ea19724.js.map": "/SpringGradent/static/js/main.9ea19724.js.map",
     "787.46493d11.chunk.js.map": "/SpringGradent/static/js/787.46493d11.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.14eb36e6.css",
-    "static/js/main.b2d2a189.js"
+    "static/css/main.9cffc5dd.css",
+    "static/js/main.9ea19724.js"
   ]
 }
